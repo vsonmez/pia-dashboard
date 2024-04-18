@@ -1,19 +1,15 @@
 import axios from "axios";
-import { LoginCredentials } from "../../modal/loginModel/loginModel";
+import { LoginCredentials } from "../../models/loginModel/loginModel";
 
 const API_AUTH_URL = "https://dummyjson.com/auth";
 
 export const loginService = async (credential: LoginCredentials) => {
   try {
-    const response = await axios.post(
-      `${API_AUTH_URL}/login`,
-      JSON.stringify(credential),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.post(`${API_AUTH_URL}/login`, JSON.stringify(credential), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
   } catch (error) {
     console.error(error);
