@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import MainRoute from "./router";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter, BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserByToken } from "./services/auth/authService";
 import { loginSuccess, logout } from "./store/features/auth/authSlice";
@@ -24,9 +24,9 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Router>
+    <HashRouter>
       <MainRoute />
-    </Router>
+    </HashRouter>
   );
 };
 
