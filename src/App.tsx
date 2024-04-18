@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import LoginPage from "./pages/loginPage/LoginPage";
 import MainRoute from "./router";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserByToken } from "./services/auth/authService";
 import { loginSuccess, logout } from "./store/features/auth/authSlice";
-import { error } from "console";
 
 const App = () => {
   const dispatch = useDispatch();

@@ -1,19 +1,14 @@
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  loginFailure,
-  loginStart,
-  loginSuccess,
-  selectAuth,
-} from "../../store/features/auth/authSlice";
+import { loginFailure, loginStart, loginSuccess, selectAuth } from "../../store/features/auth/authSlice";
 import { loginService } from "../../services/auth/authService";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const dispacth = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, error, token } = useSelector(selectAuth);
+  const { token } = useSelector(selectAuth);
 
   const handleLogin = async () => {
     try {
@@ -38,8 +33,8 @@ const LoginPage = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
+      username: "kminchelle",
+      password: "0lelplR",
     },
 
     onSubmit: () => {
