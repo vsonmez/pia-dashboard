@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pia-dashboard/static/css/main.1a13f07b.css",
-    "main.js": "/pia-dashboard/static/js/main.d41aefbb.js",
+    "main.css": "/pia-dashboard/static/css/main.15fc0fe6.css",
+    "main.js": "/pia-dashboard/static/js/main.08db2be6.js",
     "index.html": "/pia-dashboard/index.html",
-    "main.1a13f07b.css.map": "/pia-dashboard/static/css/main.1a13f07b.css.map",
-    "main.d41aefbb.js.map": "/pia-dashboard/static/js/main.d41aefbb.js.map"
+    "main.15fc0fe6.css.map": "/pia-dashboard/static/css/main.15fc0fe6.css.map",
+    "main.08db2be6.js.map": "/pia-dashboard/static/js/main.08db2be6.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a13f07b.css",
-    "static/js/main.d41aefbb.js"
+    "static/css/main.15fc0fe6.css",
+    "static/js/main.08db2be6.js"
   ]
 }
