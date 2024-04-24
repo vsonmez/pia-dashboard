@@ -1,7 +1,12 @@
 import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loginFailure, loginStart, loginSuccess, selectAuth } from "../../store/features/auth/authSlice";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+  selectAuth,
+} from "../../store/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { getToken } from "../../services/auth/authService";
 
@@ -21,7 +26,6 @@ const LoginPage = () => {
       localStorage.setItem("token", response.data.token);
     }
     navigate("/");
-
   };
 
   useEffect(() => {
