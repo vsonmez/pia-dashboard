@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import LoginPage from "./pages/loginPage/LoginPage";
 import MainRoute from "./router";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter, BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getUserByToken } from "./services/auth/authService";
+import { refreshToken } from "./services/auth/authService";
 import { loginSuccess, logout } from "./store/features/auth/authSlice";
-import { error } from "console";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -13,9 +11,9 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      getUserByToken(token).then(
-        (user) => {
-          dispatch(loginSuccess({ user, token }));
+      refreshToken().then(
+        (response) => {
+          dispatch(loginSuccess( response?.data ));
         },
         (error) => {
           console.log("Error while getting user by token", error);
@@ -26,9 +24,9 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Router>
+    <HashRouter>
       <MainRoute />
-    </Router>
+    </HashRouter>
   );
 };
 

@@ -1,33 +1,27 @@
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  loginFailure,
-  loginStart,
-  loginSuccess,
-  selectAuth,
-} from "../../store/features/auth/authSlice";
-import { loginService } from "../../services/auth/authService";
+import { loginFailure, loginStart, loginSuccess, selectAuth } from "../../store/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../../services/auth/authService";
 
 const LoginPage = () => {
   const dispacth = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, error, token } = useSelector(selectAuth);
+  const { token } = useSelector(selectAuth);
 
   const handleLogin = async () => {
-    try {
-      dispacth(loginStart());
-      const data = await loginService({
-        username: formik.values.username,
-        password: formik.values.password,
-      });
-      dispacth(loginSuccess(data));
-      localStorage.setItem("token", data.token);
-      navigate("/");
-    } catch (error: any) {
-      dispacth(loginFailure(error.message));
+    dispacth(loginStart());
+    const response = await getToken({
+      username: formik.values.username,
+      password: formik.values.password,
+    });
+    if (response?.data) {
+      dispacth(loginSuccess(response.data));
+      localStorage.setItem("token", response.data.token);
     }
+    navigate("/");
+
   };
 
   useEffect(() => {
@@ -38,8 +32,8 @@ const LoginPage = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
+      username: "kminchelle",
+      password: "0lelplR",
     },
 
     onSubmit: () => {

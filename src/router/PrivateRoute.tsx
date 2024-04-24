@@ -4,11 +4,7 @@ import { selectAuth } from "../store/features/auth/authSlice";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = () => {
-  const { token, isLoading } = useSelector(selectAuth);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const { token } = useSelector(selectAuth);
 
   return token ? <Outlet /> : <Navigate to="/login" />;
 };

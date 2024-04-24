@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
+import { LoginResponseModel } from "../../../models/loginResponseModel/login-response-model";
 
 interface AuthState {
   user: any;
@@ -23,7 +24,7 @@ export const authSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
-    loginSuccess: (state, action: PayloadAction<any>) => {
+    loginSuccess: (state, action: PayloadAction<LoginResponseModel>) => {
       state.user = action.payload;
       state.isLoading = false;
       state.token = action.payload.token;
